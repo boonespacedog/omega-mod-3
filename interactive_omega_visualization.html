@@ -193,7 +193,10 @@
                 xaxis: {
                     title: 'n',
                     type: 'log',
-                    tickformat: '.0e'
+                    tickformat: '.0e',
+                    dtick: 1,  // One tick per order of magnitude
+                    tickangle: 0,
+                    tickfont: { size: 12 }
                 },
                 yaxis: {
                     title: 'Fraction',
@@ -244,7 +247,10 @@
                 xaxis: {
                     title: 'n',
                     type: 'log',
-                    tickformat: '.0e'
+                    tickformat: '.0e',
+                    dtick: 1,  // One tick per order of magnitude
+                    tickangle: 0,
+                    tickfont: { size: 12 }
                 },
                 yaxis: {
                     title: 'Deviation (%)',
@@ -401,6 +407,16 @@
                     y: [currentData.deviations[i].slice(0, points)]
                 }, i);
             }
+            
+            // Ensure x-axis formatting is maintained
+            Plotly.relayout('distributionPlot', {
+                'xaxis.dtick': 1,
+                'xaxis.tickformat': '.0e'
+            });
+            Plotly.relayout('deviationPlot', {
+                'xaxis.dtick': 1,
+                'xaxis.tickformat': '.0e'
+            });
         }
 
         // Update statistics display

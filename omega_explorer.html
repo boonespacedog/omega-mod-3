@@ -519,7 +519,14 @@
             
             Plotly.newPlot('mainPlot', traces, {
                 title: `Distribution of Ω(n) mod ${mod}`,
-                xaxis: { title: 'n', type: 'log', tickformat: '.0e' },
+                xaxis: { 
+                    title: 'n', 
+                    type: 'log', 
+                    tickformat: '.0e',
+                    dtick: 1,  // One tick per order of magnitude
+                    tickangle: 0,
+                    tickfont: { size: 12 }
+                },
                 yaxis: { title: 'Fraction', range: [0, Math.max(0.5, 2/mod)] },
                 hovermode: 'x unified'
             });
